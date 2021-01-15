@@ -1,5 +1,4 @@
 class RetailerSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :pallets
-   
+  attributes :id, :name 
 end  
