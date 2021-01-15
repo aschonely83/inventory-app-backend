@@ -1,4 +1,6 @@
 class RetailersController < ApplicationController
+  before_action :set_retailer, only: [:show, :update, :destroy]
+  
     def index
         @retailers = Retailer.all
         render json: RetailerSerializer.new(@retailers).serializable_hash[:data].map {|hash| hash[:attributes] }    
