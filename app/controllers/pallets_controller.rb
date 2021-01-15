@@ -11,4 +11,17 @@ class PalletsController < ApplicationController
       }
       render json: PalletSerializer.new(pallet, options)    
     end
+
+    def create
+      pallet = Pallet.create(pallet_params)
+      if pallet.save
+        render json: PalletSerializer.new(pallet)   
+      end        
+    end
+
+    private
+
+    def pallet_params
+      params.require(:retailer).permit(:boxes, :retailer_id)
+    end
 end
