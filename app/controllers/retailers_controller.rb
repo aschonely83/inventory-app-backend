@@ -21,6 +21,11 @@ class RetailersController < ApplicationController
       end
     end
 
+    def destroy
+      @retailer.destroy
+      render json: RetailerSerializer.new(@retailer).serializable_hash[:data][:attributes], status: :ok
+    end
+
     private
 
     def set_retailer
