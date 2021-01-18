@@ -1,5 +1,5 @@
 class PalletSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :boxes, :retailer
+  attributes :id, :boxes, :retailer_id
   #belongs_to :retailer
 end
