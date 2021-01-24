@@ -3,7 +3,7 @@ class RetailersController < ApplicationController
   
     def index
         @retailers = Retailer.all
-        render json: @retailers.serializable_hash[:data].map {|hash| hash[:attributes] }    
+        render json: RetailerSerializer.new(@retailers).serializable_hash[:data].map {|hash| hash[:attributes] }    
     end
       
     def show
