@@ -1,4 +1,6 @@
 class PalletsController < ApplicationController
+  before_action :set_pallet, only: [:show, :update, :destroy]
+
     def index
       @pallets = Pallet.all
       
@@ -6,14 +8,22 @@ class PalletsController < ApplicationController
     end
 
     def create
-      pallet = Pallet.new(pallet_params)
-      
-      render json: pallet, status: 200
+      @pallet = Pallet.new(pallet_params)
+           
+      if @pallet.save
+        render json: @pallet, status: :created, location: @pallet
+      else
+        render json: @pallet.errors, status: :unprocessable_entity  
+      end
     end
 
     private
 
+    def set_pallet
+      @pallet = Pallet.find(params[:id])
+    end
+
     def pallet_params
-      params.require(:retailer).permit(:boxes, :retailer_id)
+      params.require(:pallet).permit(:boxes, :retailer_id)
     end
 end

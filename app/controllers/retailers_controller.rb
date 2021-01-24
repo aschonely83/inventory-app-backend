@@ -7,23 +7,25 @@ class RetailersController < ApplicationController
     end
       
     def show
-      @retailer = Retailer.find_by(id: params[:id])
-      render json: RetailerSerializer.new(@retailer)   
+      render json: { 
+        id: params[:id], 
+        palletsAttributes: RetailerPalletSerializer.new(@retailer, include: [:pallets]).serializable_hash[:included].map {|hash| hash[:attributes]}
+      }     
     end
 
     def create
       @retailer = Retailer.new(retailer_params)
       
       if @retailer.save
-        render json: RetailerSerializer.new(@retailer).serializable_hash[:data][:attributes], status: :created, location: @retailer
+        render json: @retailer, status: :created, location: @retailer
       else
-        render json: @retailer.errors.full_messages.to_sentence, status: :unprocessable_entity  
+        render json: @retailer.errors, status: :unprocessable_entity  
       end
     end
 
     def destroy
       @retailer.destroy
-      render json: RetailerSerializer.new(@retailer).serializable_hash[:data][:attributes], status: :ok
+      render json: {id: @retailer.id}, status: :ok
     end
 
     private
