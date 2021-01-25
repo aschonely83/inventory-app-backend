@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Inventory App is a single page application intended to be used as a way to keep track of retailers and how many pallets you have for them. You are able to add retailer, delete retailers and pallets, then also add pallets.
 
-Things you may want to cover:
+It uses a Rails API backend and a frontend consisting of HTML, CSS, and JavaScript.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The front can be found here: https://github.com/aschonely83/inventory-app-frontend
