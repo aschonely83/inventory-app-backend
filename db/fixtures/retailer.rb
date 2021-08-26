@@ -1,5 +1,5 @@
 Retailer.seed(:id,
-  { :id => 1, :name => "Rothys" }
+  { :id => 1, :name => "Nike" }
 )
 
 Pallet.seed(:id,
